@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main()
+{
+    double a=2.0,b=1.0,result=0,p;
+    int n;
+    scanf("%d",&n);
+    for(;n>1;n--)
+    {
+        p=a;a=a+b;b=p;
+        result +=a/b;
+    }
+    printf("%.2lf",result+2);
+    return 0;
+}
