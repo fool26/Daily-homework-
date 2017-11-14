@@ -1,0 +1,27 @@
+#include<stdio.h>
+int main()
+{
+    long long i,n,p,q;
+    scanf("%lld",&n);
+    for(i=0;i<n;i++)
+    {
+        p=i;
+        for(;n-p-1>0;p++)
+        {
+            printf(" ");
+        }p=i;q=2*p-1;
+        for(;q>=-1;q--)
+            printf("*");
+            printf("\n");
+    }
+    for(i=1;i<=n-1;i++)
+    {
+        p=i;
+        for(;p>0;p--)
+            printf(" ");
+        for(p=i,q=2*n-1-2*p;q>0;q--)
+            printf("*");
+        printf("\n");
+    }
+    return 0;
+}
