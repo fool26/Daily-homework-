@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<math.h>
+int main(void)
+{
+	long long num1,num,p;
+	int i, q,m;
+	scanf("%lld", &num1);
+	num=num1;
+	for (i = 1; num1 / 10>0; num1 = num1 / 10)
+	{
+		i++;
+	}m=i;
+	if (i <= 3)
+		printf("%lld\n", num);
+	else {
+		for (q = i / 3; q>=0; q--)
+		{
+			p = pow(10, (i - i % 3));
+
+			if (m%3!=0)
+			{
+				printf("%lld,", num / p);
+				m=m-(m%3);
+			}
+			else if(m%3==0&&m!=0)
+			{
+				p = pow(10,m-3 );
+                if(m!=3){
+				if(num<p*100&&num>=p*10)
+                    printf("0");
+                if(num<p*10&&num>=p)
+                    printf("00");
+                if(num==0)
+                    printf("000");
+				if(num/p!=0)
+                    printf("%lld,", num / p);
+                else
+                    printf(",");
+				}
+				if(m==3)
+                {if(num<100&&num>=10)
+                    printf("0");
+                if(num<10&&num>0)
+                    printf("00");
+                if(num==0)
+                    printf("000");
+                if(num!=0)
+                printf("%lld",num);}
+            m=m-3;
+			}
+			num = num%p;
+
+		}
+	}
+    return 0;
+}
