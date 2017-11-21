@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main()
+{
+    int num,oushu=0,jishu=0,m;
+    printf("Please input an interger:\n");
+    scanf("%d",&num);
+    for(;num>0;num=num/10)
+    {
+        m=num%10;
+        if(m%2==0)
+            oushu++;
+        else
+            jishu++;
+    }
+    if(oushu>0&&jishu>0)
+        printf("奇数偶数都有\n");
+    if(oushu>0&&jishu==0)
+        printf("只有偶数\n");
+    if(oushu==0&&jishu>0)
+        printf("只有奇数\n");
+    return 0;
+}
