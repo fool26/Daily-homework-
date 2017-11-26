@@ -1,0 +1,41 @@
+#include<stdio.h>
+int GCD(int n,int m);
+int LCM(int a,int b);
+int main()
+{
+    int n,m,p;
+    scanf("%d %d",&n,&m);p=GCD(n,m);
+    printf("%d ",GCD(n,m));
+    printf("%d",LCM(n,m));
+    return 0;
+
+}
+int GCD(int n,int m)
+{
+    if(n<m)
+    {
+        int p;
+        p=n;n=m;m=p;
+    }
+    while(n%m!=0)
+    {
+        int q;q=n;
+        n=m;m=q%m;
+    }
+    return m;
+}
+int LCM(int n,int m)
+{
+    int a=n,b=m;
+    if(n<m)
+    {
+        int p;
+        p=n;n=m;m=p;
+    }
+    while(n%m!=0)
+    {
+        int q;q=n;
+        n=m;m=q%m;
+    }
+    return a*b/m;
+}
