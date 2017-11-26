@@ -1,0 +1,46 @@
+#include<stdio.h>
+int isPrime(int a);
+void printFactor(int a);
+int main(void)
+{
+    int a,b;
+    scanf("%d %d",&a,&b);
+    for(;a<=b;a++)
+    {if(isPrime(a))
+    {
+       printf("\n");
+	  printFactor(a);
+    }
+    else printf("\n%d=%d",a,a);}
+    return 0;
+}
+int isPrime(int a)
+{
+    int i,p;
+    for(i=2;a%i!=0;i++)
+    {}
+    if(i==a) p=0;
+    else p=1;
+    return p;
+}
+void printFactor(int a)
+{
+    int c,i,p,q=1;
+    printf("%d=",a);
+    while(a!=1)
+        {
+    for(c=2;c<=a;c++)
+    {
+       isPrime(c); 
+    if(p-1)
+    {
+
+        while(a%c==0)
+            {if(q==1) printf("%d",c);
+            else printf("*%d",c);
+            a=a/c;q++;}
+    }
+
+    }
+          }
+}
