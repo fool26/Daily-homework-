@@ -1,0 +1,62 @@
+#include<stdio.h>
+int isLeep(int year);
+int GetMonthDays(int year,int month);//得到一个月天数给days
+int GetWeekDay(int year,int month,int day);
+void PrintMonthCalender(int startday,int days);
+int main(void)
+{
+    int year,month,days,first_xinqiji;
+    printf("Please input year and month:");
+    scanf("%d %d",&year,&month);
+    printf("The result is:\n");
+    printf("\t\t\t%d-%d\nSun.\tMon.\tTue.\tWed.\tThu.\tFri.\tSat.\n",year,month);
+    days=GetMonthDays(year,month);
+    first_xinqiji=GetWeekDay(year,month,1);
+    PrintMonthCalender(first_xinqiji,days);
+    return 0;
+}
+int isLeep(int year)
+{
+    int i;
+    if(year%400==0||(year%4==0&&year%100!=0))
+        i=1;
+    else i=0;
+    return i;
+}
+int GetMonthDays(int year,int month)//1 3 5 7 8 10 12是31天、4 6 9 11是30天、
+{
+    int days;
+    if(month==1||month==3||month==5||month==7||month==8||month==10||month==12)
+        days=31;
+    if(month==4||month==6||month==9||month==11)
+        days=30;
+    if(month==2)
+        days=28+isLeep(year);
+    return days;
+}
+int GetWeekDay(int year,int month,int day)//可知那个月的第一天是周几
+{
+    int weekDay,days,adds=0,i;
+    for(i=1;i<month;i++)
+        adds=GetMonthDays(year,i)+adds;
+    year=year-1;
+    days=year*365+year/400+year/4-year/100+adds;
+    weekDay=(days+day)%7;
+    return weekDay;
+}
+void PrintMonthCalender(int startday,int days)//startday即wee]kDay,days是一个月有多少天
+{
+    int i,m;
+    for(i=0;i<startday;i++)
+        {printf("\t");}
+    for(m=1;m<=days;m++)
+    {
+        if((m+i)%7==0)
+            printf("%d\n",m);
+        else
+            printf("%d\t",m);
+
+
+
+    }
+}
