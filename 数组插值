@@ -1,0 +1,20 @@
+#include<stdio.h>//将100插入第n位数的前面
+int main(void)
+{
+	int i,n,ar[10];
+	for(i=0;i<9;i++)
+	scanf("%d",&ar[i]);
+	for(i=0;i<9;i++)
+	printf("%d ",ar[i]);
+	printf("\n");
+	printf("please input an integer(to insert where):\n");
+	scanf("%d",&n);
+	for(i=8;i>=n-1;i--)
+	{
+		ar[i+1]=ar[i];
+	}
+	ar[n-1]=100;
+	for(i=0;i<10;i++)
+	printf("%d ",ar[i]);
+ 	return 0;
+ }
