@@ -1,0 +1,40 @@
+#include<stdio.h>//素数分解（递归版） 
+void fenjie(int n);
+int count=0;
+int main(void)
+{
+	int a,b;
+	scanf("%d %d",&a,&b);
+	for(;a<=b;a++)
+	{
+		printf("%d=",a);
+		fenjie(a);
+		printf("\n");
+		count=0;
+	}
+	return 0;
+}
+void fenjie(int n)
+{
+	int i;
+	//temp=n;
+	if(n==1)
+	printf("1");
+	else{
+	for(i=2;i<=n;i++)
+	{
+	if(n%i==0)
+	break;	
+	}
+	if(n==i&&count==0)
+	printf("%d",n);
+	else if(n==i&&count!=0)
+	printf("*%d",n);
+	else
+	{
+		count++;
+		if(count==1) printf("%d",i);
+		else printf("*%d",i);
+		fenjie(n/i);	
+	}}	
+} 
