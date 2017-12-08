@@ -1,0 +1,43 @@
+#include<stdio.h>
+int pow(int n);
+int get_Length(int n);
+int blabla(int n);
+int main()
+{
+	int n=0;
+	char ch;
+	while((ch=getchar())!='\n')
+	{
+		if(ch<='9'&&ch>='0')
+		n=ch-48+n*10;
+	}
+	printf("%d",blabla(n));
+	return 0;
+}
+int blabla(int n)
+{
+	if(n>=0&&n<=9)
+	{
+		return n;
+	}
+	else
+	{
+		return n/pow(get_Length(n)-1)+blabla(n%pow(get_Length(n)-1))*10;
+	}
+}
+int pow(int n)
+{
+	int result=1;
+	for(;n>0;n--)
+	{
+		result*=10;
+	}
+	return result;
+}
+int get_Length(int n)
+{
+	int i;
+	for(i=0;n>0;i++,n/=10)
+	{}
+	return i;
+}
