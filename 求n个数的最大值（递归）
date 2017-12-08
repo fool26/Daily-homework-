@@ -1,0 +1,23 @@
+#include<stdio.h>
+int get_Max(int n);
+int main(void)
+{
+	int n;
+	scanf("%d",&n);
+	printf("%d",get_Max(n));
+	return 0;
+} 
+int get_Max(int n)
+{
+	int a,temp;
+	scanf("%d",&a);
+	if(n==1)
+	return a;
+	else{
+	temp=get_Max(n-1);
+	if(a>temp)
+	return a;
+	else
+	return temp;
+	}
+}
