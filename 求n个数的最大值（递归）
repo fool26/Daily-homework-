@@ -11,6 +11,7 @@ int get_Max(int n)
 {
 	int a,temp;
 	scanf("%d",&a);
+	//temp=get_Max(n-1)不能放在这里，会无限循环！！！！！
 	if(n==1)
 	return a;
 	else{
