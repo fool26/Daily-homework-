@@ -1,0 +1,29 @@
+#include<stdio.h>//输入n个数，以-1结尾，求最大公约数 
+int GYS(int n,int m);
+int get_GYS(int pre); 
+int main(void)
+{
+	int pre;
+	scanf("%d",&pre);
+	printf("%d",get_GYS(pre));
+	
+	return 0;
+}
+int GYS(int n,int m)
+{
+	int c;
+	c=n%m;
+	if(c==0)
+	return m;
+	else
+	return GYS(m,c);
+}
+int get_GYS(int pre)
+{
+	int n;
+	scanf("%d",&n);
+	if(n!=-1)
+	return GYS(pre,get_GYS(n));
+	else
+	return pre;
+}
