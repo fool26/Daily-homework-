@@ -1,0 +1,34 @@
+#include<stdio.h>//输入n个数，以-1结尾，求最小公倍数 
+int GYS(int n,int m);
+int GBS(int n,int m);
+int get_GBS(int pre); 
+int main(void)
+{
+	int pre;
+	scanf("%d",&pre);
+	printf("%d",get_GBS(pre));
+	
+	return 0;
+}
+int GYS(int n,int m)
+{
+	int c;
+	c=n%m;
+	if(c==0)
+	return m;
+	else
+	return GYS(m,c);
+}
+int get_GBS(int pre)
+{
+	int n;
+	scanf("%d",&n);
+	if(n!=-1)
+	return GBS(pre,get_GBS(n));
+	else
+	return pre;
+}
+int GBS(int n,int m)
+{
+	return n*m/GYS(n,m);
+}
