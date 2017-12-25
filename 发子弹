@@ -1,0 +1,56 @@
+#include<stdio.h>
+#define N 10
+int jud(int *ar,int n);
+int main(void)
+{
+	int ar[N]={10,2,8,22,16,4,10,6,14,20},count=0,temp,i1=0;
+	do
+	{
+		printf("The %d exchange:",count);
+		for(int i=0;i<N;i++)
+		{
+			if(i!=N-1)
+			printf("%d ",ar[i]);
+			else
+			printf("%d\n",ar[N-1]);
+		}
+		for(i1=0;i1<N;i1++)
+		{
+			if(ar[i1]%2==1)
+			ar[i1]++;
+		}
+		temp=ar[N-1];
+		for(int j=N-1;j>0;j--)
+		{
+			ar[j]=ar[j]/2+ar[j-1]/2;
+		}
+		ar[0]=ar[0]/2+temp/2;
+		count++;
+		if(!jud(ar,N)){
+		printf("The %d exchange:",count);
+		for(int i=0;i<N;i++)
+		{
+			if(i!=N-1)
+			printf("%d ",ar[i]);
+			else
+			printf("%d\n",ar[N-1]);}
+		}
+	}while(jud(ar,N));
+	return 0;
+}
+
+int jud(int *ar,int n)
+{
+	int i=0,j=0;
+	double count=0,n1=n;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		if(ar[i]==ar[j])
+		count++;
+	}
+	if((n1*n1-n1)/2==count)
+	return 0;
+	else 
+	return 1;
+}
