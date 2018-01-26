@@ -1,0 +1,50 @@
+//（2018年1月26日晚）最后一次实验第三题，看了邝国政的代码后感觉自己之前写的太麻烦了，
+//bla.name可以就是gets一次录入的整个字符串，只是自己在输出的时候加个条件，这样的话
+//会比在使用时硬拆简单很多，另外如果score相同的情况也一起放在排序里面会简单很多，只是会耗时多点。太6了这个代码，
+//简直一气呵成，除了23行的0和9第一遍没加引号出错，这点以后也要多注意。 最后一次的计导实验的最后一道题了，就这样过去了，祝好，Good luck！ 
+#include<stdio.h>
+#include<string.h>
+struct student{
+	char name[40];
+	int score;
+};
+int main(void)
+{
+	int n,i,j,temp_score=0;
+	scanf("%d",&n);getchar();
+	struct student bla[100],temp_copy;
+	for(i=0;i<n;i++)
+	gets(bla[i].name);	
+	for(i=0;i<n;i++)
+	{
+		temp_score=0;
+		for(j=0;j<strlen(bla[i].name);j++)
+		{
+			if(bla[i].name[j]>='0'&&bla[i].name[j]<='9')
+			temp_score=temp_score*10+bla[i].name[j]-48; 
+		}
+		bla[i].score=temp_score;
+	}//录入完毕 
+	for(int i=0;i<n;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			if(bla[i].score<bla[j].score)
+			{
+				temp_copy=bla[i];bla[i]=bla[j];bla[j]=temp_copy; 	
+			}
+			if(bla[i].score==bla[j].score&&strcmp(bla[i].name,bla[j].name)>0)
+			{
+				temp_copy=bla[i];bla[i]=bla[j];bla[j]=temp_copy;
+			}
+		}
+	}
+	for(i=0;i<n;i++)
+	{
+		for(j=0;(bla[i].name[j]>='a'&&bla[i].name[j]<='z')||(bla[i].name[j]>='A'&&bla[i].name[j]<='Z')||bla[i].name[j]==' ';j++)
+		printf("%c",bla[i].name[j]);
+		printf("\n");
+		printf("%d\n",bla[i].score);
+	}
+	return 0;
+} 
